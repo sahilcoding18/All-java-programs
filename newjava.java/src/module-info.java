@@ -1,0 +1,2 @@
+module newjava.java {
+}

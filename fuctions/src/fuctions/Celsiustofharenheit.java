@@ -1,0 +1,26 @@
+package fuctions;
+import java.util.*;
+public class Celsiustofharenheit {
+	public static void printFahrenheitTable(int start, int end, int step) {
+        while(start<=end)
+        {
+            int f=start;
+            int c=(5*(32*f-32))/9;
+            System.out.print(f+" "+c);
+        }
+         System.out.println();
+         start=start+step;
+	   }
+    public static void main(String args[])
+    {
+      Scanner scan = new Scanner(System.in);
+       int s=scan.nextInt();
+       int e=scan.nextInt();
+       int w=scan.nextInt();
+       printFahrenheitTable(s,e,w);
+    }
+}
+
+
+
+	

@@ -1,0 +1,46 @@
+package treess;
+import java.util.*;
+import java.util.ArrayList;
+
+class Treenode<T>{
+	public T data;
+	public ArrayList<Treenode<T>> children;
+	public Treenode(T value){
+		data=value;
+		children=new ArrayList();
+	}
+}
+public class Createtree{
+	public static Treenode<Integer>takeinput(Scanner s)
+	{
+		System.out.print("ENTER THE NODE DATA");
+		int n=s.nextInt();
+		Treenode<Integer>root=new Treenode<>(n);
+		System.out.print("ENTER THE NO OF CHILDRENS");
+		int childcount=s.nextInt();
+		for(int i=0;i<childcount;i++)
+		{
+			Treenode<Integer>child=takeinput(s);
+			root.children.add(child);
+		}
+		return root;
+ }
+	public static void print(Treenode<Integer> root){
+		String s=root.data+":";
+		for(int i=0;i<root.children.size();i++)
+		{
+			s=s+root.children.get(i).data+";";
+		}
+		System.out.print(s);
+		for(int i=0;i<root.children.size();i++)
+		{
+			print(root.children.get(i));
+		}
+	}
+	public static void main(String args[])
+	{
+		Scanner s = new Scanner(System.in);
+		Treenode<Integer>root=takeinput(s);
+		print(root);
+	}
+}

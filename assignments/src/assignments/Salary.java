@@ -1,0 +1,38 @@
+package assignments;
+import java.util.Scanner;
+public class Salary {
+	public static void main(String[] args) {
+		Scanner s   = new Scanner(System.in);
+        int bsa  = s.nextInt();
+         char g     = s.next().charAt(0);
+        double hra  = 0.2*bsa;
+        double da   = 0.5*bsa;
+        double pf    = 0.11*bsa;
+        int allow;
+        if(g==65)
+        {
+          allow =1700;
+        }
+        else if(g==66)
+        {
+         allow =1500;
+        }
+        else if(g!=65&&g!=66)
+        {
+        
+          allow =1300;
+        }
+        int ts= (int) (bsa+hra+da+allow-pf);
+        int x = (int)ts;
+        if(ts-x>0.5)
+        {
+            x=x+1;
+            System.out.print(x);
+        }
+        else
+        { 
+          System.out.print(x);
+        }
+	}
+}
+

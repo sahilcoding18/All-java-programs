@@ -1,0 +1,85 @@
+package treess;
+import java.util.*;
+import java.util.ArrayList;
+
+class TreeNode<T>{
+	public T data;
+	public ArrayList<TreeNode<T>> children;
+	public TreeNode(T value){
+		data=value;
+		children=new ArrayList();
+	}
+}
+public class Createtree{
+	public static TreeNode<Integer>takeinput(Scanner s)
+	{
+		System.out.print("ENTER THE NODE DATA");
+		int n=s.nextInt();
+		TreeNode<Integer>root=new TreeNode<>(n);
+		System.out.print("ENTER THE NO OF CHILDRENS");
+		int childcount=s.nextInt();
+		for(int i=0;i<childcount;i++)
+		{
+			TreeNode<Integer>child=takeinput(s);
+			root.children.add(child);
+		}
+		return root;
+ }
+	public static void print(TreeNode<Integer> root){
+		String s=root.data+":";
+		for(int i=0;i<root.children.size();i++)
+		{
+			s=s+root.children.get(i).data+";";
+		}
+		System.out.println(s);
+		for(int i=0;i<root.children.size();i++)
+		{
+			print(root.children.get(i));
+		}
+	}
+public static int numnodes(TreeNode<Integer>root)
+{
+	if(root==null)
+		return 0;
+	int count =1;
+	for(int i=0;i<root.children.size();i++)
+	{
+		count=count+numnodes(root.children.get(i));
+	}
+	return count;
+}
+public static int sumofnodes(TreeNode<Integer>root)
+{
+	int sum=root.data;
+	for(int i=0;i<root.children.size();i++)
+	{
+		sum=sum+sumofnodes(root.children.get(i));
+	}
+	return sum;
+}
+public static int largest(TreeNode<Integer>root)
+{
+	if(root==null)
+	{
+		return Integer.MIN_VALUE;
+	}
+	int ans=root.data;
+	for(int i=0;i<root.children.size();i++)
+	{
+	  int large=largest(root.children.get(i));
+	  if(large>ans)
+	  {
+		  ans=large;
+	  }
+	}
+	return ans;
+}
+	public static void main(String args[])
+	{
+		Scanner s = new Scanner(System.in);
+		TreeNode<Integer>root=takeinput(s);
+		print(root);
+		System.out.println(numnodes(root));
+		System.out.println(sumofnodes(root));
+	}
+}
